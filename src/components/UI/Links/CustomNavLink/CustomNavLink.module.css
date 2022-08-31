@@ -1,0 +1,12 @@
+.active {
+    color: blue;
+    border-bottom: 2px solid blue;
+}
+
+.link {
+    color: black;
+}
+
+.link:hover {
+    border-bottom:1px solid cadetblue;
+}

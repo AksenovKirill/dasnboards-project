@@ -1,0 +1,30 @@
+.filterList {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+}
+
+.filterItemBox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem 1rem;
+    cursor: pointer;
+}
+
+.filterItem {
+    margin-left: 2rem;
+}
+
+.filterItemBox.active,
+.filterItemBox:hover {
+    background: #019df5;
+    color: #fff;
+}
+
+.filterItemBox.active {
+    font-weight: bold;
+    color: #fe5f1e;
+}

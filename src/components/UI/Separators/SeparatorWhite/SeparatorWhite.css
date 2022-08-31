@@ -1,0 +1,8 @@
+.hr{
+    position: relative;
+}
+.hr-2{
+    position: absolute;
+    top: -110px;
+    width: 100%;
+}
