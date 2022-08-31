@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "target": "ES6",
+			"noLib": false,
+			"charset": "utf8",
+			"module": "es6"
   },
   "include": ["src"]
 }
