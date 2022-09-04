@@ -6,10 +6,8 @@ import "./Profile.css";
 
 const Profile = () => {
   const { handleSubmitLogOut } = useAuth();
-  const username = useSelector(
-    (state) => state?.user?.data?.data?.username || "user"
-  );
-
+  const username = useSelector((state) => state?.user?.data?.data?.username || "Гость");
+  const status = useSelector((state) => state?.user?.userStatus);
   return (
     <div className="d-flex align-items-center me-n3 ms-1 ms-lg-3 dropdown-content-navigation-profile">
       <div className="btn btn-icon btn-active-light-primary btn btn-icon btn-active-light-primary btn-custom w-30px h-30px w-md-40px h-md-40px">
@@ -25,14 +23,11 @@ const Profile = () => {
               <div className="fw-bold d-flex align-items-center fs-5">
                 {username}
                 <span className="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">
-                  Status: Boss
+                  Status: {status}
                 </span>
               </div>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a
-                href="#"
-                className="fw-semibold text-muted text-hover-primary fs-7"
-              >
+              <a href="#" className="fw-semibold text-muted text-hover-primary fs-7">
                 your-mailo@email.com
               </a>
             </div>

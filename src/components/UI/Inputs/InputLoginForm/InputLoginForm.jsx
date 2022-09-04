@@ -1,14 +1,13 @@
 import React, { memo } from "react";
 
 export const InputLoginForm = memo(
-  ({ children, type, errors, onChange, onBlur }) => {
+  ({ label, register, placeholder, validation, style }) => {
     return (
-      <div className="fv-row mb-8">
+      <div className="fv-row mb-8" style={style}>
         <input
-          type={type}
-          onChange={onChange}
-          onBlur={onBlur}
+          placeholder={placeholder}
           className="form-control bg-transparent"
+          {...register(label, { ...validation })}
         />
       </div>
     );

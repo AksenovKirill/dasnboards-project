@@ -11,8 +11,6 @@ import { AddItemWrapper } from "./components/AddItem/AddItemWrapper";
 import { useSelector } from "react-redux";
 
 const App = () => {
-  const storages = useSelector((state) => state.app?.items?.storages);
-  console.log(storages);
   return (
     <Routes>
       <Route path={APP_ROUTES.Auth} element={<AuthPage />} />

@@ -4,11 +4,30 @@ export const REQUEST_TIMEOUT = 5000;
 export const TIMEOUT_SHOW_ERROR = 3000;
 export const AUTH_TOKEN_KEY_NAME = "token";
 
-export const errors = {
-  uname: "неверное имя пользователя",
-  pass: "неверный пароль",
+export const validationUserName = {
+  required: "Поле обязательно к заполнению",
+  minLength: { value: 6, message: "Минимальная длина 6 символов" },
+  maxLength: { value: 24, message: "Максимальная длина 24 символа" },
+  // pattern: "^[a-zA-Z]+([_-]?[a-zA-Z0-9])*$",
+};
+export const validationPassword = {
+  required: "Поле обязательно к заполнению",
+  minLength: { value: 8, message: "Минимальная длина 8 символов" },
+  maxLength: { value: 24, message: "Максимальная длина 24 символа" },
+  //pattern: `^(?=.*d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$`,
 };
 
+export const validationFirstLastName = {
+  required: "Поле обязательно к заполнению",
+  minLength: { value: 6, message: "Минимальная длина 6 символов" },
+  maxLength: { value: 24, message: "Максимальная длина 24 символа" },
+};
+
+export const validationAddItem = {
+  required: "Поле обязательно к заполнению",
+  minLength: { value: 6, message: "Минимальная длина 6 символов" },
+  maxLength: { value: 24, message: "Максимальная длина 24 символа" },
+};
 export const sortList = [
   { name: "по цене (DESC)", sortProperty: "-buy_price" },
   { name: "по цене (ASC)", sortProperty: "buy_price" },
@@ -28,6 +47,11 @@ export const AuthorizationStatus = {
   Unknown: "UNKNOWN",
 };
 
+export const UserStatus = {
+  Guest: "Guest",
+  Manager: "Manager",
+  Boss: "Boss",
+};
 export const API_LINKS = {
   logIn: "/api/v1/account/login",
   registration: "/api/v1/account/register",

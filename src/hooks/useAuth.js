@@ -1,28 +1,24 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginAction } from "../store/api-actions";
 import { requireAuthorization } from "../store/user-process/user-process";
+import { clearErrorAction, clearSuccessAction } from "../store/api-actions";
+import { switchForm } from "../store/app-process/app-process";
 import { dropToken } from "../api/token";
 import { AuthorizationStatus } from "../assets/const";
-import classes from "../pages/AuthPage/AuthPage.module.css";
 
 export const useAuth = () => {
-  const [errorMessages, setErrorMessages] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmitLogin = (event, name, password) => {
-    event.preventDefault();
-    const userData = { username: name, password: password };
-    dispatch(loginAction(userData));
+  const handleSubmitLogin = (data) => {
+    dispatch(loginAction(data));
     dispatch(
       requireAuthorization({
-        data: userData,
+        data: data,
         authorizationStatus: AuthorizationStatus.Auth,
       })
     );
-    setErrorMessages("");
   };
 
   const handleSubmitLogOut = (event) => {
@@ -34,15 +30,18 @@ export const useAuth = () => {
     navigate("/auth");
   };
 
-  const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className={classes.error}>{errorMessages.message}</div>
-    );
+  const handleCloseModal = (status) => {
+    dispatch(clearErrorAction());
+    if (status) {
+      dispatch(switchForm(false));
+      dispatch(clearSuccessAction());
+      navigate("/storages");
+    }
+  };
 
   return {
-    errorMessages,
     handleSubmitLogin,
     handleSubmitLogOut,
-    renderErrorMessage,
+    handleCloseModal,
   };
 };

@@ -3,8 +3,12 @@ import { AuthModalErrorIcon } from "./AuthModalErrorIcon";
 import { AuthModalSuccessIcon } from "./AuthModalSuccessIcon";
 import { AuthModalMessage } from "./AuthModalMessage";
 import { ButtonPrimary } from "../Buttons/ButtonPrimary";
+import { useAuth } from "../../../hooks/useAuth";
 
-export const AuthModal = memo(({ error, success, handleClose }) => {
+export const AuthModal = memo(({ error, success }) => {
+  const { handleCloseModal } = useAuth();
+  const handleClose = () => handleCloseModal(success?.status);
+
   return (
     <div
       className="swal2-container swal2-center swal2-backdrop-show"
@@ -18,7 +22,7 @@ export const AuthModal = memo(({ error, success, handleClose }) => {
         role="dialog"
         aria-live="assertive"
         aria-modal="true"
-        style={{ display: "grid" }}
+        style={{ display: "grid", position: "relative" }}
       >
         <button
           type="button"
@@ -31,9 +35,19 @@ export const AuthModal = memo(({ error, success, handleClose }) => {
         <ul className="swal2-progress-steps" style={{ display: "none" }} />
         {success && <AuthModalSuccessIcon />}
         {error && <AuthModalErrorIcon />}
-        <img className="swal2-image" style={{ display: "none" }} />
-        <h2 className="swal2-title" id="swal2-title" style={{ display: "none" }} />
-        <AuthModalMessage message={success ? success.title : error.data.title} />
+        <img
+          className="swal2-image"
+          style={{ display: "none" }}
+          alt="localImg"
+        />
+        {/* <h2
+          className="swal2-title"
+          id="swal2-title"
+          style={{ display: "none" }}
+        /> */}
+        <AuthModalMessage
+          message={success ? success.title : error.data.title}
+        />
         <input className="swal2-input" style={{ display: "none" }} />
         <input type="file" className="swal2-file" style={{ display: "none" }} />
         <div className="swal2-range" style={{ display: "none" }}>
@@ -42,7 +56,11 @@ export const AuthModal = memo(({ error, success, handleClose }) => {
         </div>
         <select className="swal2-select" style={{ display: "none" }} />
         <div className="swal2-radio" style={{ display: "none" }} />
-        <label htmlFor="swal2-checkbox" className="swal2-checkbox" style={{ display: "none" }}>
+        <label
+          htmlFor="swal2-checkbox"
+          className="swal2-checkbox"
+          style={{ display: "none" }}
+        >
           <input type="checkbox" />
           <span className="swal2-label" />
         </label>
@@ -62,16 +80,29 @@ export const AuthModal = memo(({ error, success, handleClose }) => {
           >
             Ok, got it!
           </ButtonPrimary>
-          <button type="button" className="swal2-deny" aria-label="" style={{ display: "none" }}>
+          <button
+            type="button"
+            className="swal2-deny"
+            aria-label=""
+            style={{ display: "none" }}
+          >
             No
           </button>
-          <button type="button" className="swal2-cancel" aria-label="" style={{ display: "none" }}>
+          <button
+            type="button"
+            className="swal2-cancel"
+            aria-label=""
+            style={{ display: "none" }}
+          >
             Cancel
           </button>
         </div>
         <div className="swal2-footer" style={{ display: "none" }} />
         <div className="swal2-timer-progress-bar-container">
-          <div className="swal2-timer-progress-bar" style={{ display: "none" }} />
+          <div
+            className="swal2-timer-progress-bar"
+            style={{ display: "none" }}
+          />
         </div>
       </div>
     </div>
