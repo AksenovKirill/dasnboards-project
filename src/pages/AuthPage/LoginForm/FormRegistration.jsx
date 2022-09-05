@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { FormWrapper } from "../LoginForm/FormWrapper";
-import { AuthPageImage } from "../AuthPageImage";
+import { AuthPageImage } from "../../../components/UI/Images/AuthPageImage";
 import { InputLoginForm } from "../../../components/UI/Inputs/InputLoginForm/InputLoginForm";
 import { ErrorValidateForm } from "../../../components/UI/Errors/ErrorValidateForm";
 import { ButtonPrimary } from "../../../components/UI/Buttons/ButtonPrimary";
@@ -28,6 +28,7 @@ export const FormRegistration = () => {
 
   const handleClick = (data) => {
     if (isValid) {
+      console.log(data);
       handleSubmitRegistration(data);
     }
     if (success?.status) {
@@ -47,9 +48,7 @@ export const FormRegistration = () => {
             >
               <div className="text-center mb-11">
                 <h1 className="text-dark fw-bolder mb-3">Sign Up</h1>
-                <div className="text-gray-500 fw-semibold fs-6">
-                  Your Social Campaigns
-                </div>
+                <div className="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
               </div>
               <InputLoginForm
                 register={register}
@@ -172,6 +171,7 @@ export const FormRegistration = () => {
                 type="password"
                 placeholder="Repeat password"
                 label="repeatPassword"
+                autocomplete="current-password"
                 validation={validationPassword}
               />
               {errors.repeatPassword ? (

@@ -9,7 +9,6 @@ export const AuthPage = memo(() => {
   const isOpenForm = useSelector((state) => state.app?.openForm);
   const error = useSelector((state) => state.data?.error);
   const success = useSelector((state) => state.data?.success);
-
   return (
     <div className="container-xxl mt-20">
       {(error || success) &&

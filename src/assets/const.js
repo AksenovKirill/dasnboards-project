@@ -1,5 +1,5 @@
 export const testUrl = "https://62e0e42998dd9c9df618a454.mockapi.io/items";
-export const API_URL = "https://24f6-2-59-41-170.eu.ngrok.io";
+export const API_URL = "http://2.59.41.170:4005/";
 export const REQUEST_TIMEOUT = 5000;
 export const TIMEOUT_SHOW_ERROR = 3000;
 export const AUTH_TOKEN_KEY_NAME = "token";
@@ -76,10 +76,8 @@ export const HTTP_CODES = {
 export const changesClasses = {
   showTableMenu:
     "menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4 show",
-  showTableLink:
-    "btn btn-sm btn-light btn-active-light-primary show menu-dropdown",
-  showFilterTableMenu:
-    "menu menu-sub menu-sub-dropdown w-250px w-md-300px show",
+  showTableLink: "btn btn-sm btn-light btn-active-light-primary show menu-dropdown",
+  showFilterTableMenu: "menu menu-sub menu-sub-dropdown w-250px w-md-300px show",
   showFilterTableLink:
     "btn btn-custom btn-active-white btn-flex btn-color-white btn-active-color-primary fw-bold show menu-dropdown",
 };

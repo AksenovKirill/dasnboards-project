@@ -24,5 +24,4 @@ export const appProcess = createSlice({
   },
 });
 
-export const { addNewItemStorage, addNewItemProducts, switchForm } =
-  appProcess.actions;
+export const { addNewItemStorage, addNewItemProducts, switchForm } = appProcess.actions;

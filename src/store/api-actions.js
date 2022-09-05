@@ -3,9 +3,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "./index";
 import { dropToken, saveToken } from "../api/token";
 import { requireAuthorization } from "./user-process/user-process";
-import { ErrorHandle } from "../api/error-handle";
 import { setError, setSuccess } from "./app-data/app-data";
 import { AuthorizationStatus, API_LINKS, HTTP_CODES } from "../assets/const";
+import { errorHandle } from "api/error-handle";
 
 export const checkAuthAction = createAsyncThunk(
   "/requireAuthorization",
@@ -27,7 +27,6 @@ export const checkAuthAction = createAsyncThunk(
             })
           );
         }
-        ErrorHandle(error);
       }
     }
   }
@@ -51,7 +50,7 @@ export const loginAction = createAsyncThunk(
           authorizationStatus: AuthorizationStatus.NoAuth,
         })
       );
-      dispatch(setError(error.response));
+      errorHandle(error);
     }
   }
 );
@@ -63,7 +62,8 @@ export const registrationAction = createAsyncThunk(
       const { data } = await api.post(API_LINKS.registration, userData);
       dispatch(setSuccess(data));
     } catch (error) {
-      dispatch(setError(error.response));
+      console.log(error);
+      errorHandle(error);
     }
   }
 );

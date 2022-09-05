@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import { AuthPageImage } from "../AuthPageImage";
+import { AuthPageImage } from "../../../components/UI/Images/AuthPageImage";
 import { FormWrapper } from "../LoginForm/FormWrapper";
 import { InputLoginForm } from "../../../components/UI/Inputs/InputLoginForm/InputLoginForm";
 import { ButtonPrimary } from "../../../components/UI/Buttons/ButtonPrimary";
@@ -45,9 +45,7 @@ export const FormAuth = () => {
             >
               <div className="text-center mb-11">
                 <h1 className="text-dark fw-bolder mb-3">Sign In</h1>
-                <div className="text-gray-500 fw-semibold fs-6">
-                  Your Social Campaigns
-                </div>
+                <div className="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
               </div>
               <InputLoginForm
                 register={register}

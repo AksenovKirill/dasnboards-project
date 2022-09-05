@@ -13,20 +13,12 @@ export const useAuth = () => {
 
   const handleSubmitLogin = (data) => {
     dispatch(loginAction(data));
-    dispatch(
-      requireAuthorization({
-        data: data,
-        authorizationStatus: AuthorizationStatus.Auth,
-      })
-    );
   };
 
   const handleSubmitLogOut = (event) => {
     event.preventDefault();
     dropToken();
-    dispatch(
-      requireAuthorization({ authorizationStatus: AuthorizationStatus.NoAuth })
-    );
+    dispatch(requireAuthorization({ authorizationStatus: AuthorizationStatus.NoAuth }));
     navigate("/auth");
   };
 
@@ -36,6 +28,8 @@ export const useAuth = () => {
       dispatch(switchForm(false));
       dispatch(clearSuccessAction());
       navigate("/storages");
+    } else {
+      dispatch(clearErrorAction());
     }
   };
 

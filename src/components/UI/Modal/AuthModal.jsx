@@ -7,6 +7,7 @@ import { useAuth } from "../../../hooks/useAuth";
 
 export const AuthModal = memo(({ error, success }) => {
   const { handleCloseModal } = useAuth();
+
   const handleClose = () => handleCloseModal(success?.status);
 
   return (
@@ -35,19 +36,13 @@ export const AuthModal = memo(({ error, success }) => {
         <ul className="swal2-progress-steps" style={{ display: "none" }} />
         {success && <AuthModalSuccessIcon />}
         {error && <AuthModalErrorIcon />}
-        <img
-          className="swal2-image"
-          style={{ display: "none" }}
-          alt="localImg"
-        />
+        <img className="swal2-image" style={{ display: "none" }} alt="localImg" />
         {/* <h2
           className="swal2-title"
           id="swal2-title"
           style={{ display: "none" }}
         /> */}
-        <AuthModalMessage
-          message={success ? success.title : error.data.title}
-        />
+        <AuthModalMessage message={success ? success : error} />
         <input className="swal2-input" style={{ display: "none" }} />
         <input type="file" className="swal2-file" style={{ display: "none" }} />
         <div className="swal2-range" style={{ display: "none" }}>
@@ -56,11 +51,7 @@ export const AuthModal = memo(({ error, success }) => {
         </div>
         <select className="swal2-select" style={{ display: "none" }} />
         <div className="swal2-radio" style={{ display: "none" }} />
-        <label
-          htmlFor="swal2-checkbox"
-          className="swal2-checkbox"
-          style={{ display: "none" }}
-        >
+        <label htmlFor="swal2-checkbox" className="swal2-checkbox" style={{ display: "none" }}>
           <input type="checkbox" />
           <span className="swal2-label" />
         </label>
@@ -80,29 +71,16 @@ export const AuthModal = memo(({ error, success }) => {
           >
             Ok, got it!
           </ButtonPrimary>
-          <button
-            type="button"
-            className="swal2-deny"
-            aria-label=""
-            style={{ display: "none" }}
-          >
+          <button type="button" className="swal2-deny" aria-label="" style={{ display: "none" }}>
             No
           </button>
-          <button
-            type="button"
-            className="swal2-cancel"
-            aria-label=""
-            style={{ display: "none" }}
-          >
+          <button type="button" className="swal2-cancel" aria-label="" style={{ display: "none" }}>
             Cancel
           </button>
         </div>
         <div className="swal2-footer" style={{ display: "none" }} />
         <div className="swal2-timer-progress-bar-container">
-          <div
-            className="swal2-timer-progress-bar"
-            style={{ display: "none" }}
-          />
+          <div className="swal2-timer-progress-bar" style={{ display: "none" }} />
         </div>
       </div>
     </div>
