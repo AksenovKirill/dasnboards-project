@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { TableStorages } from "../../components/Tables/TableStorages/TableStorages";
-import Footer from "../../components/Footer/Footer";
+import { Footer } from "../../components/Footer/Footer";
 import { ButtonScrollTop } from "../../components/UI/Buttons/ButtonScrollTop/ButtonScrollTop";
 import "./Storage.css";
 

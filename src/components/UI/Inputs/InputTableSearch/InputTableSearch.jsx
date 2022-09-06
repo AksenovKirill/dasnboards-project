@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-export const InputTableSearch = () => {
+export const InputTableSearch = memo(() => {
   return (
     <div className="d-flex align-items-center position-relative my-1">
       <span className="svg-icon svg-icon-1 position-absolute ms-4">
@@ -34,4 +34,4 @@ export const InputTableSearch = () => {
       />
     </div>
   );
-};
+});

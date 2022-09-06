@@ -5,7 +5,11 @@ export const useRegistration = () => {
   const dispatch = useDispatch();
 
   const handleSubmitRegistration = (data) => {
-    dispatch(registrationAction(data));
+    const registrationData = {
+      username: data.username,
+      password: data.password,
+    };
+    dispatch(registrationAction(registrationData));
   };
 
   return {

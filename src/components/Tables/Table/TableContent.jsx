@@ -1,8 +1,8 @@
-import React, { memo, useState, useEffect } from "react";
+import React, { memo, useState, useEffect, useCallback } from "react";
 import { TableItem } from "../Table/TableItem";
 import { LoaderTable } from "../../../pages/Loaders/LoaderTable";
 import { InputTableCheckbox } from "../../UI/Inputs/InputTableCheckbox/InputTableCheckbox";
-import TableHeader from "../Table/TableHeader";
+import { TableHeader } from "../Table/TableHeader";
 
 export const TableContent = memo(({ data, isLoading, configTable }) => {
   const [isCheckAll, setIsCheckAll] = useState(false);
@@ -13,21 +13,24 @@ export const TableContent = memo(({ data, isLoading, configTable }) => {
     setList(data);
   }, [data]);
 
-  const handleSelectAll = () => {
+  const handleSelectAll = useCallback(() => {
     setIsCheckAll(!isCheckAll);
     setIsCheck(list.map((element) => element.id));
     if (isCheckAll) {
       setIsCheck([]);
     }
-  };
+  }, [isCheckAll, list]);
 
-  const handleClick = (event) => {
-    const { id, checked } = event.target;
-    setIsCheck([...isCheck, id]);
-    if (!checked) {
-      setIsCheck(isCheck.filter((item) => item !== id));
-    }
-  };
+  const handleClick = useCallback(
+    (event) => {
+      const { id, checked } = event.target;
+      setIsCheck([...isCheck, id]);
+      if (!checked) {
+        setIsCheck(isCheck.filter((item) => item !== id));
+      }
+    },
+    [isCheck]
+  );
 
   if (isLoading) {
     return <LoaderTable />;
@@ -54,7 +57,12 @@ export const TableContent = memo(({ data, isLoading, configTable }) => {
       </thead>
       <tbody className="fw-semibold text-gray-600">
         {data.map((property, index) => (
-          <TableItem handleClick={handleClick} isCheck={isCheck} key={index} {...property} />
+          <TableItem
+            handleClick={handleClick}
+            isCheck={isCheck}
+            key={index}
+            {...property}
+          />
         ))}
       </tbody>
     </table>

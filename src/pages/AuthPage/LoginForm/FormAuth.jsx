@@ -1,17 +1,15 @@
-import React from "react";
+import React, { memo } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { AuthPageImage } from "../../../components/UI/Images/AuthPageImage";
 import { FormWrapper } from "../LoginForm/FormWrapper";
 import { InputLoginForm } from "../../../components/UI/Inputs/InputLoginForm/InputLoginForm";
 import { ButtonPrimary } from "../../../components/UI/Buttons/ButtonPrimary";
-import { ErrorValidateForm } from "../../../components/UI/Errors/ErrorValidateForm";
 import { SwitchForm } from "./SwitchForm";
 import { useAuth } from "../../../hooks/useAuth";
-import { validationPassword, validationUserName } from "assets/const";
-import good from "../../../assets/media/good.svg";
+import { inputAuthConfig } from "assets/configurators";
 
-export const FormAuth = () => {
+export const FormAuth = memo(() => {
   const {
     register,
     handleSubmit,
@@ -32,6 +30,16 @@ export const FormAuth = () => {
     }
   };
 
+  const inputList = inputAuthConfig.map((config) => (
+    <InputLoginForm
+      key={config.id}
+      config={config}
+      register={register}
+      validation={config.validation}
+      errors={errors[config.label]}
+    />
+  ));
+
   return (
     <FormWrapper>
       <AuthPageImage />
@@ -45,67 +53,11 @@ export const FormAuth = () => {
             >
               <div className="text-center mb-11">
                 <h1 className="text-dark fw-bolder mb-3">Sign In</h1>
-                <div className="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
+                <div className="text-gray-500 fw-semibold fs-6">
+                  Your Social Campaigns
+                </div>
               </div>
-              <InputLoginForm
-                register={register}
-                type="text"
-                placeholder="Your name"
-                label="username"
-                validation={validationUserName}
-              />
-              {errors?.username ? (
-                <ErrorValidateForm
-                  style={{
-                    position: "absolute",
-                    top: "9rem",
-                    left: "0rem",
-                    color: "red",
-                  }}
-                >
-                  {errors?.username?.message || "Error"}
-                </ErrorValidateForm>
-              ) : (
-                <img
-                  style={{
-                    position: "absolute",
-                    top: "7.5rem",
-                    left: "-3.5rem",
-                  }}
-                  src={good}
-                  alt="good"
-                />
-              )}
-              <InputLoginForm
-                register={register}
-                type="password"
-                placeholder="Password"
-                label="password"
-                validation={validationPassword}
-              />
-              {errors.password ? (
-                <ErrorValidateForm
-                  style={{
-                    position: "absolute",
-                    top: "14.3rem",
-                    left: "0",
-                    color: "red",
-                  }}
-                >
-                  {errors?.password?.message || "Error!"}
-                </ErrorValidateForm>
-              ) : (
-                <img
-                  style={{
-                    position: "absolute",
-                    top: "13rem",
-                    left: "-3.5rem",
-                  }}
-                  src={good}
-                  alt="good"
-                />
-              )}
-              {}
+              {inputList}
               <div className="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="#" className="link-primary">
@@ -128,4 +80,4 @@ export const FormAuth = () => {
       </div>
     </FormWrapper>
   );
-};
+});

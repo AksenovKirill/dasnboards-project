@@ -1,16 +1,15 @@
-import React from "react";
-import "./Header.css";
-import MenuBurger from "./MenuBurger/MenuBurger";
-import Profile from "./Profile/Profile";
+import React, { memo } from "react";
+import { MenuBurger } from "./MenuBurger/MenuBurger";
+import { Profile } from "./Profile/Profile";
 import { MyStorage } from "./MyStorage/MyStorage";
 import { Marketplaces } from "./Marketplaces/Marketplaces";
-import Search from "./Search/Search";
-import DarkLightMode from "./DarkLightMode/DarkLightMode";
-import Toolbar from "./Toolbar/Toolbar";
+import { Search } from "./Search/Search";
+import { DarkLightMode } from "./DarkLightMode/DarkLightMode";
+import { Toolbar } from "./Toolbar/Toolbar";
 import { SeparatorWhite } from "../UI/Separators/SeparatorWhite/SeparatorWhite";
 import "./Header.css";
 
-const Header = () => {
+export const Header = memo(() => {
   return (
     <div className="header d-flex flex-column">
       <div className="container-xxl d-flex align-items-center mt-6">
@@ -35,6 +34,4 @@ const Header = () => {
       <Toolbar />
     </div>
   );
-};
-
-export default Header;
+});

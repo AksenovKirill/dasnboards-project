@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-export const Pagination = () => {
+export const Pagination = memo(() => {
   return (
     <div className="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
       <div className="dataTables_paginate paging_simple_numbers">
@@ -99,4 +99,4 @@ export const Pagination = () => {
       </div>
     </div>
   );
-};
+});

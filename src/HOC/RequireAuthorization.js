@@ -6,7 +6,7 @@ export const RequireAuthorization = ({ children }) => {
   const location = useLocation();
   const data = useSelector((state) => state.user.data);
   const authStatus = useSelector((state) => state.user.authorizationStatus);
-  const { NoAuth, Unknown } = AuthorizationStatus;
+  const { NoAuth } = AuthorizationStatus;
 
   if (authStatus === NoAuth || !data) {
     return <Navigate to="/auth" state={{ from: location }} />;

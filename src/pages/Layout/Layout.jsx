@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { Outlet } from "react-router-dom";
+import { Header } from "../../components/Header/Header";
 import { RequireAuthorization } from "../../HOC/RequireAuthorization";
-import Header from "../../components/Header/Header";
 
 export const Layout = memo(() => {
   return (
@@ -12,9 +12,7 @@ export const Layout = memo(() => {
             <Header />
             <div className="d-flex flex-column-fluid align-items-start container-xxl">
               <div className="content flex-row-fluid">
-                <RequireAuthorization>
-                  <Outlet />
-                </RequireAuthorization>
+                <Outlet />
               </div>
             </div>
           </div>

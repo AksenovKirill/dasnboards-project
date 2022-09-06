@@ -8,11 +8,10 @@ export const errorHandle = (error) => {
     throw error;
   }
   const { data, status } = error?.response;
-  console.log(data);
+
   switch (status) {
     case HTTP_CODES.BAD_REQUEST:
-      const [object] = data;
-      store.dispatch(setError(object.msg));
+      store.dispatch(setError("Проверьте правильность заполненных полей"));
       break;
     case HTTP_CODES.UNAUTHORIZED:
       store.dispatch(setError(data.title));

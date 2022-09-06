@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-const Footer = () => {
+export const Footer = memo(() => {
   return (
     <div className="footer py-4 d-flex mt-5" id="kt_footer">
       <div className="container-xxl d-flex flex-column justify-content-center align-items-center">
@@ -34,6 +34,4 @@ const Footer = () => {
       </div>
     </div>
   );
-};
-
-export default Footer;
+});

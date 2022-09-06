@@ -6,7 +6,7 @@ import { TableContent } from "../Table/TableContent";
 import { SelectTableItemLimit } from "../../UI/Selects/SelectTableItemLimit/SelectTableItemLimit";
 import { Pagination } from "../../UI/Pagination/Pagination";
 import { InputTableSearch } from "../../UI/Inputs/InputTableSearch/InputTableSearch";
-import useItemsFetching from "../../../hooks/useItemsFetching";
+import { useItemsFetching } from "../../../hooks/useItemsFetching";
 import { TableWrapper } from "../Table/TableWrapper";
 import { headerTableStoragesConfig } from "../../../assets/configurators";
 
@@ -29,7 +29,7 @@ export const TableStorages = memo(() => {
             <InputTableSearch />
             <div className="card-toolbar flex-row-fluid justify-content-end gap-5 px-10">
               <SelectTableCategory />
-              <LinkPrimary to={"/addstorage"}>Добавить склад</LinkPrimary>
+              <LinkPrimary to={"/add"}>Добавить склад</LinkPrimary>
             </div>
           </>
         )}

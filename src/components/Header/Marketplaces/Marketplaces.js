@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import "./Marketplaces.css";
 
-export const Marketplaces = () => {
+export const Marketplaces = memo(() => {
   return (
     <div className="menu-item menu-lg-down-accordion me-0 me-lg-2 dropdown-content-navigation-market">
-      <span className="menu-link py-4">
+      <span className="menu-link">
         <span className="menu-title">Маркетплейсы</span>
       </span>
       <div className="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown p-0 w-700px dropdown-content-navigation-content-market">
@@ -285,4 +285,4 @@ export const Marketplaces = () => {
       </div>
     </div>
   );
-};
+});

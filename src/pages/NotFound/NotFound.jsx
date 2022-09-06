@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { AuthorizationStatus } from "assets/const";
 
 export const NotFound = memo(() => {
-  const authStatus = useSelector((state) => state.auth.authStatus);
+  const authStatus = useSelector((state) => state.user.authorizationStatus);
 
   const navigate = useNavigate();
 

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-export const AuthModalErrorIcon = (props) => (
+export const AuthModalErrorIcon = memo((props) => (
   <div
     className="swal2-icon swal2-error swal2-icon-show"
     style={{ display: "flex" }}
@@ -10,4 +10,4 @@ export const AuthModalErrorIcon = (props) => (
       <span className="swal2-x-mark-line-right" />
     </span>
   </div>
-);
+));

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, memo } from "react";
 import { useSelector } from "react-redux";
-import useItemsFetching from "../../../hooks/useItemsFetching";
+import { useItemsFetching } from "../../../hooks/useItemsFetching";
 import { InputTableSearch } from "../../UI/Inputs/InputTableSearch/InputTableSearch";
 import { SelectTableCategory } from "../../UI/Selects/SelectTableCategory/SelectTableCategory";
 import { LinkPrimary } from "../../UI/Links/LinkPrimary";
@@ -9,7 +9,7 @@ import { SelectTableItemLimit } from "../../UI/Selects/SelectTableItemLimit/Sele
 import { Pagination } from "../../UI/Pagination/Pagination";
 import { headerTableMarketConfig } from "../../../assets/configurators";
 
-export const TableProductStock = () => {
+export const TableProductStock = memo(() => {
   const { fetchItems, data, isLoading } = useItemsFetching();
   const newItem = useSelector((state) => state.app.items.products);
   const items = [...data, ...newItem];
@@ -52,4 +52,4 @@ export const TableProductStock = () => {
       </div>
     </div>
   );
-};
+});

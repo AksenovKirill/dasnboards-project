@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-const TableHeader = ({ title, className }) => {
+export const TableHeader = memo(({ title, className }) => {
   return (
     <>
       <th key={title} className={className}>
@@ -8,6 +8,4 @@ const TableHeader = ({ title, className }) => {
       </th>
     </>
   );
-};
-
-export default TableHeader;
+});

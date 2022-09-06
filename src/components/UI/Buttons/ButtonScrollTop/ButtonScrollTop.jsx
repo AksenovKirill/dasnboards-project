@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo, useCallback } from "react";
 import classes from "./ButtonScrollTop.module.css";
 
-export const ButtonScrollTop = () => {
+export const ButtonScrollTop = memo(() => {
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
@@ -12,14 +12,14 @@ export const ButtonScrollTop = () => {
         setShowButton(false);
       }
     });
-  }, []);
+  }, [showButton]);
 
-  const goToTop = () => {
+  const goToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-  };
+  }, []);
 
   return (
     <div className={classes.topToBtn}>
@@ -53,4 +53,4 @@ export const ButtonScrollTop = () => {
       )}
     </div>
   );
-};
+});

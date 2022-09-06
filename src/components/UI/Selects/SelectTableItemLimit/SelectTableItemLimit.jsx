@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import "./SelectTableItemLimit.css";
 
-export const SelectTableItemLimit = () => {
+export const SelectTableItemLimit = memo(() => {
   return (
     <div className="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
       <div
@@ -23,4 +23,4 @@ export const SelectTableItemLimit = () => {
       </div>
     </div>
   );
-};
+});

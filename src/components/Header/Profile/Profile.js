@@ -1,12 +1,14 @@
-import React from "react";
+import React, { memo } from "react";
 import { useAuth } from "../../../hooks/useAuth";
 import { useSelector } from "react-redux";
 import logoProfile from "../../../assets/media/avatars/300-2.jpg";
 import "./Profile.css";
 
-const Profile = () => {
+export const Profile = memo(() => {
   const { handleSubmitLogOut } = useAuth();
-  const username = useSelector((state) => state?.user?.data?.data?.username || "Гость");
+  const username = useSelector(
+    (state) => state?.user?.data?.data?.username || "Гость"
+  );
   const status = useSelector((state) => state?.user?.userStatus);
   return (
     <div className="d-flex align-items-center me-n3 ms-1 ms-lg-3 dropdown-content-navigation-profile">
@@ -27,7 +29,10 @@ const Profile = () => {
                 </span>
               </div>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a href="#" className="fw-semibold text-muted text-hover-primary fs-7">
+              <a
+                href="#"
+                className="fw-semibold text-muted text-hover-primary fs-7"
+              >
                 your-mailo@email.com
               </a>
             </div>
@@ -47,6 +52,4 @@ const Profile = () => {
       </div>
     </div>
   );
-};
-
-export default Profile;
+});

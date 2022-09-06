@@ -1,11 +1,13 @@
-import React from "react";
-import "./Toolbar.css";
+import React, { memo } from "react";
+import { useSelector } from "react-redux";
 import { GoBackButtonRoute } from "../../UI/Buttons/GoBackButtonRoute/GoBackButtonRoute";
 import { FilterTable } from "../../Filters/FilterTable";
 import { ButtonPrimary } from "../../UI/Buttons/ButtonPrimary";
+import "./Toolbar.css";
 
-const Toolbar = () => {
-  const isAddItem = false;
+export const Toolbar = memo(() => {
+  const isAddItem = useSelector((state) => state.app?.isAddItem);
+
   return (
     <div className="toolbar-1 py-5 py-lg-10">
       <div className="container-xxl d-flex flex-stack flex-wrap">
@@ -19,7 +21,7 @@ const Toolbar = () => {
                 Мой склад
               </li>
               <li className="breadcrumb-item text-white">
-                <span className="bullet bg-white opacity-75 w-5px h-2px" />>
+                <span className="bullet bg-white opacity-75 w-5px h-2px" />
               </li>
               <li className="breadcrumb-item">
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
@@ -40,6 +42,4 @@ const Toolbar = () => {
       </div>
     </div>
   );
-};
-
-export default Toolbar;
+});

@@ -6,6 +6,7 @@ const initialState = {
     products: [],
   },
   openForm: false,
+  isAddItem: false,
 };
 
 export const appProcess = createSlice({
@@ -24,4 +25,5 @@ export const appProcess = createSlice({
   },
 });
 
-export const { addNewItemStorage, addNewItemProducts, switchForm } = appProcess.actions;
+export const { addNewItemStorage, addNewItemProducts, switchForm } =
+  appProcess.actions;

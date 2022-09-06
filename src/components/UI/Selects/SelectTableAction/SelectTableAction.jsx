@@ -26,7 +26,9 @@ export const SelectTableAction = memo(({ isOpen, handleClick }) => {
         onClick={handleClick}
         href="#"
         className={
-          isOpen ? changesClasses.showTableLink : "btn btn-sm btn-light btn-active-light-primary"
+          isOpen
+            ? changesClasses.showTableLink
+            : "btn btn-sm btn-light btn-active-light-primary"
         }
         data-kt-menu-trigger="click"
         data-kt-menu-placement="bottom-end"
@@ -65,7 +67,11 @@ export const SelectTableAction = memo(({ isOpen, handleClick }) => {
         </div>
         <div className="menu-item px-3">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a href="#" className="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">
+          <a
+            href="#"
+            className="menu-link px-3"
+            data-kt-ecommerce-product-filter="delete_row"
+          >
             Delete
           </a>
         </div>

@@ -1,5 +1,5 @@
-import React from "react";
+import React, { memo } from "react";
 
-export const TDItem = ({ className, children }) => {
+export const TDItem = memo(({ className, children }) => {
   return <td className={className}>{children}</td>;
-};
+});

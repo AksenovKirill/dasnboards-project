@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import { SelectTableAction } from "../../UI/Selects/SelectTableAction/SelectTableAction";
 import { InputTableCheckbox } from "../../UI/Inputs/InputTableCheckbox/InputTableCheckbox";
 import { TDItem } from "./TDItem";
 
-export const TableItem = ({ ...props }) => {
+export const TableItem = memo(({ ...props }) => {
   const { id, name, priority, typeW, handleClick, isCheck, status } = props;
   const [isOpen, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = useCallback(() => {
     setOpen(!isOpen);
-  };
+  }, [isOpen]);
 
   return (
     <tr>
@@ -53,4 +53,4 @@ export const TableItem = ({ ...props }) => {
       <SelectTableAction isOpen={isOpen} handleClick={handleClickOpen} />
     </tr>
   );
-};
+});

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-export const AuthModalSuccessIcon = (props) => (
+export const AuthModalSuccessIcon = memo((props) => (
   <div
     className="swal2-icon swal2-success swal2-icon-show"
     style={{ display: "flex" }}
@@ -9,4 +9,4 @@ export const AuthModalSuccessIcon = (props) => (
     <span className="swal2-success-line-long" />
     <div className="swal2-success-ring" />
   </div>
-);
+));

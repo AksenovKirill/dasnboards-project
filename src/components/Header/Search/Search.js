@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import "./Search.css";
 
-const Search = () => {
+export const Search = memo(() => {
   return (
     <div className="d-flex align-items-stretch ms-1 ms-lg-3">
       <div className="header-search d-flex align-items-stretch">
@@ -107,6 +107,4 @@ const Search = () => {
       </div>
     </div>
   );
-};
-
-export default Search;
+});
