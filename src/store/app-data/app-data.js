@@ -1,17 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  storages: {
-    isLoaded: false,
+  warehouses: {
+    data: [],
+    isLoading: false,
   },
-  products: {
-    isLoaded: false,
-  },
-  stocks: {
-    isLoaded: false,
+
+  organizations: {
+    data: [],
+    isLoading: false,
   },
   marketplaces: {
-    isLoaded: false,
+    data: [],
+    isLoading: false,
   },
   error: undefined,
   success: undefined,
@@ -21,22 +22,23 @@ export const appData = createSlice({
   name: "data",
   initialState,
   reducers: {
-    loadStorages: (state, action) => {
-      state.storages = action.payload;
-      state.storages.isLoaded = true;
+    loadWareHouse: (state, action) => {
+      state.warehouses.data = action.payload.data;
+      state.warehouses.isLoading = action.payload.isLoading;
     },
-    loadProducts: (state, action) => {
-      state.products = action.payload;
-      state.products.isLoaded = true;
+    loadMarketPlaces: (state, action) => {
+      state.marketplaces = action.payload.data;
+      state.marketplaces.isLoaded = action.payload.isLoading;
+    },
+    loadOrganizations: (state, action) => {
+      state.organizations.data = action.payload.data;
+      state.organizations.isLoaded = action.payload.isLoading;
     },
     loadStocks: (state, action) => {
       state.stocks = action.payload;
       state.stocks.isLoaded = true;
     },
-    loadMarketPlaces: (state, action) => {
-      state.marketplaces = action.payload;
-      state.stocks.isLoaded = true;
-    },
+
     setSuccess: (state, action) => {
       state.success = action.payload;
     },
@@ -47,10 +49,11 @@ export const appData = createSlice({
 });
 
 export const {
-  loadStorages,
+  loadWareHouse,
   loadProducts,
   loadStocks,
   loadMarketPlaces,
+  loadOrganizations,
   setError,
   setSuccess,
 } = appData.actions;

@@ -3,14 +3,15 @@ import {
   validationPassword,
   validationRepeatPassword,
   validationUserName,
-} from "./const";
+} from "./validations";
 
 export const headerTableStoragesConfig = [
-  { title: "Название склада", className: "text-center min-w-100px" },
-  { title: "id", className: "text-center min-w-30px" },
-  { title: "Тип", className: "text-center min-w-100px" },
-  { title: "Приоритет", className: "text-center min-w-150px" },
-  { title: "Статус", className: "text-center min-w-100px" },
+  { title: "name", className: "text-center px-10 min-w-80px" },
+  { title: "id", className: "text-center px-10 min-w-80px" },
+  { title: "type", className: "text-center px-10 min-w-80px" },
+  { title: "priority", className: "text-center px-10 min-w-80px" },
+  { title: "moysklad_id", className: "text-center px-10 min-w-80px" },
+  { title: "virtual_moysklad_id", className: "text-center px-10 min-w-80px" },
   { title: "Действие", className: "text-end min-w-100px px-5" },
 ];
 
@@ -21,6 +22,13 @@ export const headerTableMarketConfig = [
   { title: "Остатки", className: "text-center min-w-100px" },
   { title: "Статус", className: "text-center min-w-100px" },
   { title: "Действие", className: "text-end min-w-100px px-5" },
+];
+
+export const headerTableOrganizationsConfig = [
+  { title: "id", className: "text-center min-w-80px" },
+  { title: "Name", className: "text-center min-w-300px" },
+  { title: "moysklad_id", className: "text-center min-w-300px" },
+  { title: "Action", className: "text-end min-w-200px px-10" },
 ];
 
 export const inputAuthConfig = [

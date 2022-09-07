@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import { Link } from "react-router-dom";
 import "./Marketplaces.css";
 
 export const Marketplaces = memo(() => {
@@ -14,7 +15,7 @@ export const Marketplaces = memo(() => {
               <div className="col-lg-6 mb-3">
                 <div className="menu-item">
                   {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                  <a href="#" className="menu-link">
+                  <Link to="/organizations" className="menu-link">
                     <span className="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
                       <span className="svg-icon svg-icon-primary svg-icon-1">
                         <svg
@@ -70,7 +71,7 @@ export const Marketplaces = memo(() => {
                         Информация о организациях
                       </span>
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-lg-6 mb-3">

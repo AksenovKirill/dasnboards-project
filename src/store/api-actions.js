@@ -3,15 +3,25 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "./index";
 import { dropToken, saveToken } from "../api/token";
 import { requireAuthorization } from "./user-process/user-process";
-import { setError, setSuccess } from "./app-data/app-data";
-import { AuthorizationStatus, API_LINKS, HTTP_CODES } from "../assets/const";
+import {
+  setError,
+  setSuccess,
+  loadWareHouse,
+  loadOrganizations,
+} from "./app-data/app-data";
+import {
+  AuthorizationStatus,
+  API_LINKS,
+  HTTP_CODES,
+  AUTH_TOKEN_KEY_NAMES,
+} from "../assets/const";
 import { errorHandle } from "api/error-handle";
 
 export const checkAuthAction = createAsyncThunk(
   "/requireAuthorization",
   async (_, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await api.post(API_LINKS.logIn);
+      const { data } = await api.post(API_LINKS.LOG_IN);
       dispatch(
         requireAuthorization({
           authorizationStatus: AuthorizationStatus.Auth,
@@ -36,14 +46,16 @@ export const loginAction = createAsyncThunk(
   "/login",
   async (userData, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await api.post(API_LINKS.logIn, userData);
-      saveToken(data.token);
+      const { data } = await api.post(API_LINKS.LOG_IN, userData);
+      saveToken(AUTH_TOKEN_KEY_NAMES.access, data.accessToken);
+      saveToken(AUTH_TOKEN_KEY_NAMES.refresh, data.refreshToken);
       dispatch(
         requireAuthorization({
           data,
           authorizationStatus: AuthorizationStatus.Auth,
         })
       );
+      dispatch(setSuccess({ status: true, title: "Welcome", isLogin: true }));
     } catch (error) {
       dispatch(
         requireAuthorization({
@@ -59,10 +71,9 @@ export const registrationAction = createAsyncThunk(
   "/registration",
   async (userData, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await api.post(API_LINKS.registration, userData);
+      const { data } = await api.post(API_LINKS.REGISTRATION, userData);
       dispatch(setSuccess(data));
     } catch (error) {
-      console.log(error);
       errorHandle(error);
     }
   }
@@ -74,6 +85,22 @@ export const logoutAction = createAsyncThunk(
     await api.delete(API_LINKS.logOut);
     dropToken();
     dispatch(requireAuthorization({ status }));
+  }
+);
+
+export const loadWareHouseAction = createAsyncThunk(
+  "/loadWarehouse",
+  async (_, { rejectWithValue, dispatch }) => {
+    const { data } = await api.get(API_LINKS.GET_WAREHOUSES);
+    dispatch(loadWareHouse({ data, isLoading: true }));
+  }
+);
+
+export const loadOrganizationsAction = createAsyncThunk(
+  "/loadOrganizations",
+  async (_, { rejectWithValue, dispatch }) => {
+    const { data } = await api.get(API_LINKS.GET_ORGANIZATIONS);
+    dispatch(loadOrganizations({ data, isLoading: true }));
   }
 );
 

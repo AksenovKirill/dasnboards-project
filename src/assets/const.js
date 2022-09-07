@@ -2,47 +2,35 @@ export const testUrl = "https://62e0e42998dd9c9df618a454.mockapi.io/items";
 export const API_URL = "https://mp-test.alikson.ru/";
 export const REQUEST_TIMEOUT = 5000;
 export const TIMEOUT_SHOW_ERROR = 3000;
-export const AUTH_TOKEN_KEY_NAME = "posts";
 
-export const validationUserName = {
-  required: "Поле обязательно к заполнению",
-  minLength: { value: 6, message: "Минимальная длина 6 символов" },
-  maxLength: { value: 24, message: "Максимальная длина 24 символа" },
-  pattern: {
-    value: /^[a-zA-Z]+([_-]?[a-zA-Z0-9])*$/,
-    message: "Поле должно содержать только латинские буквы и цифры",
-  },
+export const AUTH_TOKEN_KEY_NAMES = {
+  refresh: "resfreshToken",
+  access: "accessToken",
 };
 
-export const validationPassword = {
-  required: "Поле обязательно к заполнению",
-  minLength: { value: 8, message: "Минимальная длина 8 символов" },
-  maxLength: { value: 24, message: "Максимальная длина 24 символа" },
-  pattern: {
-    value: /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/,
-    message: "Поле должно содержать только латинские буквы и цифры",
-  },
-};
-export const validationRepeatPassword = {
-  required: "Поле обязательно к заполнению",
-  minLength: { value: 8, message: "Минимальная длина 8 символов" },
-  maxLength: { value: 24, message: "Максимальная длина 24 символа" },
-  pattern: {
-    value: /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/,
-    message: "Поле должно содержать только латинские буквы и цифры",
-  },
+export const API_LINKS = {
+  LOG_IN: "api/v1/account/login",
+  REGISTRATION: "api/v1/account/register",
+  GET_WAREHOUSES: "api/v1/warehouse/get_warehouses",
+  GET_MARKETPLACES: "api/v1/marketplaces/get_marketplaces",
+  GET_ORGANIZATIONS: "api/v1/merchants/get_organizations",
 };
 
-export const validationFirstLastName = {
-  required: "Поле обязательно к заполнению",
-  minLength: { value: 6, message: "Минимальная длина 6 символов" },
-  maxLength: { value: 24, message: "Максимальная длина 24 символа" },
+export const APP_ROUTES = {
+  Main: "/",
+  Auth: "/auth",
+  WareHouses: "/warehouses",
+  Add: "/add",
+  Products: "/products",
+  Organizations: "/organizations",
 };
 
-export const validationAddItem = {
-  required: "Поле обязательно к заполнению",
-  minLength: { value: 6, message: "Минимальная длина 6 символов" },
-  maxLength: { value: 24, message: "Максимальная длина 24 символа" },
+export const HTTP_CODES = {
+  OK: 200,
+  BAD_REQUEST: 422,
+  UNAUTHORIZED: 401,
+  NOT_FOUND: 404,
+  SERVER_ERROR: 500,
 };
 
 export const sortList = [
@@ -64,27 +52,6 @@ export const UserStatus = {
   Boss: "Boss",
 };
 
-export const API_LINKS = {
-  logIn: "/api/v1/account/login",
-  registration: "/api/v1/account/register",
-};
-
-export const APP_ROUTES = {
-  Main: "/",
-  Auth: "/auth",
-  Storage: "/storages",
-  Add: "/add",
-  Products: "/products",
-};
-
-export const HTTP_CODES = {
-  OK: 200,
-  BAD_REQUEST: 422,
-  UNAUTHORIZED: 401,
-  NOT_FOUND: 404,
-  SERVER_ERROR: 500,
-};
-
 export const changesClasses = {
   showTableMenu:
     "menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4 show",
@@ -95,6 +62,3 @@ export const changesClasses = {
   showFilterTableLink:
     "btn btn-custom btn-active-white btn-flex btn-color-white btn-active-color-primary fw-bold show menu-dropdown",
 };
-
-export const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR3VzdGF2byIsImlhdCI6MTU5NjQwODI1OSwiZXhwIjo0NzUyMTY4MjU5fQ.ThwsJW2KfMTl0y24tTGWKHqvYWRp1iyo_Kh2KWTHuXc";

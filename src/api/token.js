@@ -1,14 +1,12 @@
-import { AUTH_TOKEN_KEY_NAME } from "../assets/const";
-
-export const getToken = () => {
-  const token = localStorage.getItem(AUTH_TOKEN_KEY_NAME);
+export const getToken = (name) => {
+  const token = localStorage.getItem(name);
   return token ?? "";
 };
 
-export const saveToken = (token) => {
-  localStorage.setItem(AUTH_TOKEN_KEY_NAME, token);
+export const saveToken = (name, token) => {
+  localStorage.setItem(name, token);
 };
 
-export const dropToken = () => {
-  localStorage.removeItem(AUTH_TOKEN_KEY_NAME);
+export const dropToken = (name) => {
+  localStorage.removeItem(name);
 };

@@ -15,7 +15,7 @@ export const MyStorage = memo(() => {
               <div className="row">
                 <div className="col-lg-6 mb-3">
                   <div className="menu-item">
-                    <Link to="/storages" className="menu-link">
+                    <Link to="/warehouses" className="menu-link">
                       <span className="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
                         <span className="svg-icon svg-icon-primary svg-icon-2x">
                           <svg

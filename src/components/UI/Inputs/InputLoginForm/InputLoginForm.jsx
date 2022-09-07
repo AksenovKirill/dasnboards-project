@@ -5,7 +5,6 @@ import { GoodIcon } from "../../Images/GoodIcon";
 export const InputLoginForm = memo((props) => {
   const { register, config, validation, errors } = props;
   const { isLabel, type, label, placeholder, wrapper } = config;
-  console.log(wrapper);
 
   return (
     <>

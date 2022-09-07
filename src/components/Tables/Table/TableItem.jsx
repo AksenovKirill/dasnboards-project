@@ -4,7 +4,16 @@ import { InputTableCheckbox } from "../../UI/Inputs/InputTableCheckbox/InputTabl
 import { TDItem } from "./TDItem";
 
 export const TableItem = memo(({ ...props }) => {
-  const { id, name, priority, typeW, handleClick, isCheck, status } = props;
+  const {
+    id,
+    name,
+    priority,
+    type,
+    moysklad_id,
+    virtual_moysklad_id,
+    handleClick,
+    isCheck,
+  } = props;
   const [isOpen, setOpen] = useState(false);
 
   const handleClickOpen = useCallback(() => {
@@ -25,6 +34,10 @@ export const TableItem = memo(({ ...props }) => {
         </div>
       </TDItem>
 
+      <TDItem className="text-center pe-5">
+        <span className="fw-bold">{id}</span>
+      </TDItem>
+
       <TDItem className="text-center pe-0">
         {/*<div className="d-flex align-items-center">*/}
         {/*<a*/}
@@ -38,18 +51,27 @@ export const TableItem = memo(({ ...props }) => {
           {name}
         </a>
       </TDItem>
-      <TDItem className="text-center pe-5">
-        <span className="fw-bold">{id}</span>
-      </TDItem>
+
       <TDItem className="text-center pe-0">
-        <span className="fw-bold">{typeW}</span>
+        <span className="fw-bold">{type}</span>
       </TDItem>
+
       <TDItem className="text-center pe-0">
         <span className="fw-bold">{priority}</span>
       </TDItem>
+
       <TDItem className="text-center pe-0" data-order="Inactive">
-        <div className="badge badge-light-danger">{status}</div>
+        <span className="fw-bold">
+          {virtual_moysklad_id?.slice(0, 12).concat("...")}
+        </span>
       </TDItem>
+
+      <TDItem className="text-center pe-0" data-order="Inactive">
+        <span className="fw-bold">
+          {moysklad_id?.slice(0, 10).concat("...")}
+        </span>
+      </TDItem>
+
       <SelectTableAction isOpen={isOpen} handleClick={handleClickOpen} />
     </tr>
   );

@@ -13,10 +13,14 @@ export const AuthModal = memo(({ error, success }) => {
   const navigate = useNavigate();
 
   const handleCloseModal = () => {
+    if (success?.status && success?.isLogin) {
+      dispatch(switchForm(false));
+      dispatch(clearSuccessAction());
+      navigate("/warehouses");
+    }
     if (success?.status) {
       dispatch(switchForm(false));
       dispatch(clearSuccessAction());
-      //navigate("/storages");
     } else {
       dispatch(clearErrorAction());
     }

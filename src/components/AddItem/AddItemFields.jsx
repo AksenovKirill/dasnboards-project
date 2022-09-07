@@ -6,6 +6,7 @@ import { InputLoginForm } from "../UI/Inputs/InputLoginForm/InputLoginForm";
 import { ButtonPrimary } from "../UI/Buttons/ButtonPrimary";
 import { addNewItemStorage } from "store/app-process/app-process";
 import { inputTableStorageAddItemConfig } from "../../assets/configurators";
+
 export const AddItemFields = () => {
   const {
     register,

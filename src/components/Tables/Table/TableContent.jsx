@@ -1,5 +1,5 @@
 import React, { memo, useState, useEffect, useCallback } from "react";
-import { TableItem } from "../Table/TableItem";
+import { TableItem } from "./TableItem";
 import { LoaderTable } from "../../../pages/Loaders/LoaderTable";
 import { InputTableCheckbox } from "../../UI/Inputs/InputTableCheckbox/InputTableCheckbox";
 import { TableHeader } from "../Table/TableHeader";
@@ -32,9 +32,9 @@ export const TableContent = memo(({ data, isLoading, configTable }) => {
     [isCheck]
   );
 
-  if (isLoading) {
-    return <LoaderTable />;
-  }
+  // if (!isLoading) {
+  //   return <LoaderTable />;
+  // }
 
   return (
     <table className="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer">
