@@ -14,6 +14,7 @@ export const API_LINKS = {
   GET_WAREHOUSES: "api/v1/warehouse/get_warehouses",
   GET_MARKETPLACES: "api/v1/marketplaces/get_marketplaces",
   GET_ORGANIZATIONS: "api/v1/merchants/get_organizations",
+  REFRESH_TOKEN: "api/v1/account/refresh",
 };
 
 export const APP_ROUTES = {

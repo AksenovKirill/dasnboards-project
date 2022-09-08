@@ -3,38 +3,36 @@ import { TableItem } from "./TableItem";
 import { LoaderTable } from "../../../pages/Loaders/LoaderTable";
 import { InputTableCheckbox } from "../../UI/Inputs/InputTableCheckbox/InputTableCheckbox";
 import { TableHeader } from "../Table/TableHeader";
+import { getTableTitles } from "../../../assets/helpers";
 
 export const TableContent = memo(({ data, isLoading, configTable }) => {
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [list, setList] = useState([]);
-
+  const arrayData = data.map((elem) => Object.values(elem));
   useEffect(() => {
     setList(data);
   }, [data]);
 
-  const handleSelectAll = useCallback(() => {
+  const handleSelectAll = () => {
     setIsCheckAll(!isCheckAll);
     setIsCheck(list.map((element) => element.id));
     if (isCheckAll) {
       setIsCheck([]);
     }
-  }, [isCheckAll, list]);
+  };
 
-  const handleClick = useCallback(
-    (event) => {
-      const { id, checked } = event.target;
-      setIsCheck([...isCheck, id]);
-      if (!checked) {
-        setIsCheck(isCheck.filter((item) => item !== id));
-      }
-    },
-    [isCheck]
-  );
+  const handleClick = (event) => {
+    const { id, checked } = event.target;
+    setIsCheck([...isCheck, id]);
+    if (!checked) {
+      setIsCheck(isCheck.filter((item) => item !== id));
+    }
+  };
 
-  // if (!isLoading) {
-  //   return <LoaderTable />;
-  // }
+  if (!isLoading) {
+    return <LoaderTable />;
+  }
 
   return (
     <table className="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer">
@@ -50,19 +48,15 @@ export const TableContent = memo(({ data, isLoading, configTable }) => {
               />
             </div>
           </th>
-          {configTable.map(({ title, className }) => (
-            <TableHeader key={title} title={title} className={className} />
+
+          {getTableTitles(data, configTable).map(({ title, className }, index) => (
+            <TableHeader key={index} title={title} className={className} />
           ))}
         </tr>
       </thead>
       <tbody className="fw-semibold text-gray-600">
-        {data.map((property, index) => (
-          <TableItem
-            handleClick={handleClick}
-            isCheck={isCheck}
-            key={index}
-            {...property}
-          />
+        {arrayData.map((data, index) => (
+          <TableItem key={index} handleClick={handleClick} isCheck={isCheck} data={data} />
         ))}
       </tbody>
     </table>

@@ -5,15 +5,26 @@ import {
   validationUserName,
 } from "./validations";
 
-export const headerTableStoragesConfig = [
-  { title: "name", className: "text-center px-10 min-w-80px" },
-  { title: "id", className: "text-center px-10 min-w-80px" },
-  { title: "type", className: "text-center px-10 min-w-80px" },
-  { title: "priority", className: "text-center px-10 min-w-80px" },
-  { title: "moysklad_id", className: "text-center px-10 min-w-80px" },
-  { title: "virtual_moysklad_id", className: "text-center px-10 min-w-80px" },
-  { title: "Действие", className: "text-end min-w-100px px-5" },
+export const headerTableStoragesClasses = [
+  { className: "text-center px-10 min-w-80px" },
+  { className: "text-center px-10 min-w-80px" },
+  { className: "text-center px-10 min-w-80px" },
+  { className: "text-center px-10 min-w-80px" },
+  { className: "text-center px-10 min-w-80px" },
+  { className: "text-center px-10 min-w-80px" },
 ];
+
+export const headerTableOrganizationsClasses = [
+  { className: "text-center min-w-80px" },
+  { className: "text-center min-w-300px" },
+  { className: "text-center min-w-300px" },
+  { className: "text-end min-w-200px px-10" },
+];
+
+export const actionConfig = {
+  title: "Action",
+  className: "text-end min-w-100px px-10",
+};
 
 export const headerTableMarketConfig = [
   { title: "Наименование товара", className: "text-center min-w-100px" },
@@ -22,13 +33,6 @@ export const headerTableMarketConfig = [
   { title: "Остатки", className: "text-center min-w-100px" },
   { title: "Статус", className: "text-center min-w-100px" },
   { title: "Действие", className: "text-end min-w-100px px-5" },
-];
-
-export const headerTableOrganizationsConfig = [
-  { title: "id", className: "text-center min-w-80px" },
-  { title: "Name", className: "text-center min-w-300px" },
-  { title: "moysklad_id", className: "text-center min-w-300px" },
-  { title: "Action", className: "text-end min-w-200px px-10" },
 ];
 
 export const inputAuthConfig = [

@@ -3,19 +3,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "./index";
 import { dropToken, saveToken } from "../api/token";
 import { requireAuthorization } from "./user-process/user-process";
-import {
-  setError,
-  setSuccess,
-  loadWareHouse,
-  loadOrganizations,
-} from "./app-data/app-data";
-import {
-  AuthorizationStatus,
-  API_LINKS,
-  HTTP_CODES,
-  AUTH_TOKEN_KEY_NAMES,
-} from "../assets/const";
+import { setError, setSuccess, loadWareHouse, loadOrganizations } from "./app-data/app-data";
+import { AuthorizationStatus, API_LINKS, HTTP_CODES, AUTH_TOKEN_KEY_NAMES } from "../assets/const";
 import { errorHandle } from "api/error-handle";
+import { adapterForOrganizations, adapterForWareHouses } from "assets/helpers";
 
 export const checkAuthAction = createAsyncThunk(
   "/requireAuthorization",
@@ -79,6 +70,25 @@ export const registrationAction = createAsyncThunk(
   }
 );
 
+export const refreshTokenAction = createAsyncThunk(
+  "/refresh",
+  async (token, { rejectWithValue, dispatch }) => {
+    try {
+      const { data } = await api.post(API_LINKS.REFRESH_TOKEN, {
+        refreshToken: token,
+      });
+      dispatch(setSuccess("token done"));
+      dropToken(AUTH_TOKEN_KEY_NAMES.refresh);
+      dropToken(AUTH_TOKEN_KEY_NAMES.access);
+      saveToken(AUTH_TOKEN_KEY_NAMES.access, data.accessToken);
+      saveToken(AUTH_TOKEN_KEY_NAMES.refresh, data.refreshToken);
+      window.location.reload();
+    } catch (error) {
+      errorHandle(error);
+    }
+  }
+);
+
 export const logoutAction = createAsyncThunk(
   "/logout",
   async (status, { rejectWithValue, dispatch }) => {
@@ -92,7 +102,7 @@ export const loadWareHouseAction = createAsyncThunk(
   "/loadWarehouse",
   async (_, { rejectWithValue, dispatch }) => {
     const { data } = await api.get(API_LINKS.GET_WAREHOUSES);
-    dispatch(loadWareHouse({ data, isLoading: true }));
+    dispatch(loadWareHouse({ data: adapterForWareHouses(data), isLoading: true }));
   }
 );
 
@@ -100,7 +110,7 @@ export const loadOrganizationsAction = createAsyncThunk(
   "/loadOrganizations",
   async (_, { rejectWithValue, dispatch }) => {
     const { data } = await api.get(API_LINKS.GET_ORGANIZATIONS);
-    dispatch(loadOrganizations({ data, isLoading: true }));
+    dispatch(loadOrganizations({ data: adapterForOrganizations(data), isLoading: true }));
   }
 );
 

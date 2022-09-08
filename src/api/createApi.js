@@ -1,6 +1,8 @@
 import axios from "axios";
 import { API_URL, AUTH_TOKEN_KEY_NAMES, REQUEST_TIMEOUT } from "assets/const";
 import { getToken } from "./token";
+import { store } from "store";
+import { refreshTokenAction } from "store/api-actions";
 
 export const createAPI = () => {
   const api = axios.create({

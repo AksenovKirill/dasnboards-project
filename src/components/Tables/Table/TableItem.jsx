@@ -3,19 +3,9 @@ import { SelectTableAction } from "../../UI/Selects/SelectTableAction/SelectTabl
 import { InputTableCheckbox } from "../../UI/Inputs/InputTableCheckbox/InputTableCheckbox";
 import { TDItem } from "./TDItem";
 
-export const TableItem = memo(({ ...props }) => {
-  const {
-    id,
-    name,
-    priority,
-    type,
-    moysklad_id,
-    virtual_moysklad_id,
-    handleClick,
-    isCheck,
-  } = props;
+export const TableItem = memo(({ handleClick, isCheck, data }) => {
   const [isOpen, setOpen] = useState(false);
-
+  console.log(data);
   const handleClickOpen = useCallback(() => {
     setOpen(!isOpen);
   }, [isOpen]);
@@ -25,53 +15,28 @@ export const TableItem = memo(({ ...props }) => {
       <TDItem>
         <div className="form-check form-check-sm form-check-custom form-check-solid">
           <InputTableCheckbox
-            key={id}
-            id={id}
+            key={data[0]}
+            id={data[0]}
             name="checkbox"
-            handleClick={handleClick}
-            isChecked={isCheck.includes(id)}
+            // handleClick={handleClick}
+            // isChecked={isCheck.includes(id)}
           />
         </div>
       </TDItem>
-
-      <TDItem className="text-center pe-5">
-        <span className="fw-bold">{id}</span>
-      </TDItem>
-
-      <TDItem className="text-center pe-0">
-        {/*<div className="d-flex align-items-center">*/}
-        {/*<a*/}
-        {/*  href="https://via.placeholder.com/50"*/}
-        {/*  className="symbol symbol-50px"*/}
-        {/*>*/}
-        {/*  <span className="symbol-label" />*/}
-        {/*</a>*/}
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a href="#" className="text-gray-800 text-hover-primary fs-5 fw-bold">
-          {name}
-        </a>
-      </TDItem>
-
-      <TDItem className="text-center pe-0">
-        <span className="fw-bold">{type}</span>
-      </TDItem>
-
-      <TDItem className="text-center pe-0">
-        <span className="fw-bold">{priority}</span>
-      </TDItem>
-
-      <TDItem className="text-center pe-0" data-order="Inactive">
-        <span className="fw-bold">
-          {virtual_moysklad_id?.slice(0, 12).concat("...")}
-        </span>
-      </TDItem>
-
-      <TDItem className="text-center pe-0" data-order="Inactive">
-        <span className="fw-bold">
-          {moysklad_id?.slice(0, 10).concat("...")}
-        </span>
-      </TDItem>
-
+      {data.map((elem) => (
+        <TDItem key={elem}>
+          {" "}
+          <span className="fw-bold">{elem}</span>
+        </TDItem>
+      ))}
+      {/*<div className="d-flex align-items-center">*/}
+      {/*<a*/}
+      {/*  href="https://via.placeholder.com/50"*/}
+      {/*  className="symbol symbol-50px"*/}
+      {/*>*/}
+      {/*  <span className="symbol-label" />*/}
+      {/*</a>*/}
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
       <SelectTableAction isOpen={isOpen} handleClick={handleClickOpen} />
     </tr>
   );

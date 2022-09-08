@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loadWareHouseAction } from "../../../store/api-actions";
+import { loadWareHouseAction, refreshTokenAction } from "../../../store/api-actions";
 import { SelectTableCategory } from "../../UI/Selects/SelectTableCategory/SelectTableCategory";
 import { LinkPrimary } from "../../UI/Links/LinkPrimary";
 import { TableContent } from "../Table/TableContent";
@@ -8,12 +8,18 @@ import { SelectTableItemLimit } from "../../UI/Selects/SelectTableItemLimit/Sele
 import { Pagination } from "../../UI/Pagination/Pagination";
 import { InputTableSearch } from "../../UI/Inputs/InputTableSearch/InputTableSearch";
 import { TableWrapper } from "../Table/TableWrapper";
-import { headerTableStoragesConfig } from "../../../assets/configurators";
+import { headerTableStoragesClasses } from "../../../assets/configurators";
+import { getToken } from "../../../api/token";
+import { AUTH_TOKEN_KEY_NAMES } from "../../../assets/const";
 
 export const TableWareHouses = memo(() => {
   const dispatch = useDispatch();
   const warehouses = useSelector((state) => state.data?.warehouses?.data);
   const isLoading = useSelector((state) => state.data?.warehouses?.isLoading);
+  console.log(warehouses);
+  const handleClick = () => {
+    dispatch(refreshTokenAction(getToken(AUTH_TOKEN_KEY_NAMES.refresh)));
+  };
 
   useEffect(() => {
     dispatch(loadWareHouseAction());
@@ -24,6 +30,7 @@ export const TableWareHouses = memo(() => {
     <TableWrapper>
       <div className="card-header align-items-center py-5 px-1 gap-2 gap-md-5">
         <div className="card-title" />
+        <button onClick={handleClick}>Refresh</button>
         {isLoading && (
           <>
             <InputTableSearch />
@@ -40,7 +47,7 @@ export const TableWareHouses = memo(() => {
             <TableContent
               data={warehouses}
               isLoading={isLoading}
-              configTable={headerTableStoragesConfig}
+              configTable={headerTableStoragesClasses}
             />
           </div>
           {isLoading && (

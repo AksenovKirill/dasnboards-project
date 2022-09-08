@@ -6,15 +6,13 @@ import { LinkPrimary } from "../../UI/Links/LinkPrimary";
 import { TableContent } from "../Table/TableContent";
 import { InputTableSearch } from "../../UI/Inputs/InputTableSearch/InputTableSearch";
 import { TableWrapper } from "../Table/TableWrapper";
-import { headerTableOrganizationsConfig } from "../../../assets/configurators";
+import { headerTableOrganizationsClasses } from "../../../assets/configurators";
 
 export const TableOrganizations = memo(() => {
   const dispatch = useDispatch();
   const organizations = useSelector((state) => state.data?.organizations?.data);
-  const isLoading = useSelector(
-    (state) => state.data?.organizations?.isLoading
-  );
-
+  const isLoading = useSelector((state) => state.data?.organizations?.isLoading);
+  console.log(Object.values(organizations));
   useEffect(() => {
     dispatch(loadOrganizationsAction());
     // eslint-disable-next-line
@@ -39,8 +37,8 @@ export const TableOrganizations = memo(() => {
           <div className="table-responsive">
             <TableContent
               data={organizations}
-              isLoading={isLoading}
-              configTable={headerTableOrganizationsConfig}
+              isLoading={!isLoading}
+              configTable={headerTableOrganizationsClasses}
             />
           </div>
         </div>
