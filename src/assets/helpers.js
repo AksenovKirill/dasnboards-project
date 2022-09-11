@@ -1,4 +1,8 @@
-import { actionConfig } from "./configurators";
+import {
+  actionConfig,
+  headerTableOrganizationsClasses,
+  headerTableStoragesClasses,
+} from "./configurators";
 
 const getTitles = (data) => {
   return Object.keys(data[0] ?? {}).map((element) => ({
@@ -15,7 +19,12 @@ export const getTableTitles = (data, config) => {
   return result;
 };
 
-export const adapterForWareHouses = (data) => {
+const getAdaptArrays = (data) => {
+  const adaptItems = data.map((object) => Object.values(object));
+  return adaptItems;
+};
+
+export const adapterWareHouses = (data) => {
   const adaptItems = Object.entries(data).map(([key, value]) => {
     const { id, moysklad_id, name, priority, type, virtual_moysklad_id } = value;
 
@@ -28,10 +37,13 @@ export const adapterForWareHouses = (data) => {
       virtual: virtual_moysklad_id ?? "empty",
     };
   });
-  return adaptItems;
+
+  const items = getAdaptArrays(adaptItems);
+  const headers = getTableTitles(adaptItems, headerTableStoragesClasses);
+  return { items, headers };
 };
 
-export const adapterForOrganizations = (data) => {
+export const adapterOrganizations = (data) => {
   const adaptItems = Object.entries(data).map(([key, value]) => {
     const { id, moysklad_id, name } = value;
     return {
@@ -40,5 +52,7 @@ export const adapterForOrganizations = (data) => {
       moysklad: moysklad_id,
     };
   });
-  return adaptItems;
+  const items = getAdaptArrays(adaptItems);
+  const headers = getTableTitles(adaptItems, headerTableOrganizationsClasses);
+  return { items, headers };
 };

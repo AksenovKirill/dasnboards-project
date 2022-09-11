@@ -5,7 +5,6 @@ import { TDItem } from "./TDItem";
 
 export const TableItem = memo(({ handleClick, isCheck, data }) => {
   const [isOpen, setOpen] = useState(false);
-  console.log(data);
   const handleClickOpen = useCallback(() => {
     setOpen(!isOpen);
   }, [isOpen]);
@@ -23,9 +22,8 @@ export const TableItem = memo(({ handleClick, isCheck, data }) => {
           />
         </div>
       </TDItem>
-      {data.map((elem) => (
-        <TDItem key={elem}>
-          {" "}
+      {data.map((elem, index) => (
+        <TDItem key={index}>
           <span className="fw-bold">{elem}</span>
         </TDItem>
       ))}

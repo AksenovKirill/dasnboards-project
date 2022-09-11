@@ -5,11 +5,11 @@ import { InputTableCheckbox } from "../../UI/Inputs/InputTableCheckbox/InputTabl
 import { TableHeader } from "../Table/TableHeader";
 import { getTableTitles } from "../../../assets/helpers";
 
-export const TableContent = memo(({ data, isLoading, configTable }) => {
+export const TableContent = memo(({ data, isLoading }) => {
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [list, setList] = useState([]);
-  const arrayData = data.map((elem) => Object.values(elem));
+
   useEffect(() => {
     setList(data);
   }, [data]);
@@ -33,7 +33,6 @@ export const TableContent = memo(({ data, isLoading, configTable }) => {
   if (!isLoading) {
     return <LoaderTable />;
   }
-
   return (
     <table className="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer">
       <thead>
@@ -49,13 +48,13 @@ export const TableContent = memo(({ data, isLoading, configTable }) => {
             </div>
           </th>
 
-          {getTableTitles(data, configTable).map(({ title, className }, index) => (
+          {data?.headers?.map(({ title, className }, index) => (
             <TableHeader key={index} title={title} className={className} />
           ))}
         </tr>
       </thead>
       <tbody className="fw-semibold text-gray-600">
-        {arrayData.map((data, index) => (
+        {data?.items?.map((data, index) => (
           <TableItem key={index} handleClick={handleClick} isCheck={isCheck} data={data} />
         ))}
       </tbody>

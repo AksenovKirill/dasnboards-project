@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   warehouses: {
-    data: [],
+    data: undefined,
     isLoading: false,
   },
 
   organizations: {
-    data: [],
+    data: undefined,
     isLoading: false,
   },
   marketplaces: {
@@ -23,7 +23,7 @@ export const appData = createSlice({
   initialState,
   reducers: {
     loadWareHouse: (state, action) => {
-      state.warehouses.data = action.payload.data;
+      state.warehouses.data = action.payload;
       state.warehouses.isLoading = action.payload.isLoading;
     },
     loadMarketPlaces: (state, action) => {
@@ -32,7 +32,7 @@ export const appData = createSlice({
     },
     loadOrganizations: (state, action) => {
       state.organizations.data = action.payload.data;
-      state.organizations.isLoaded = action.payload.isLoading;
+      state.organizations.isLoading = action.payload.isLoading;
     },
     loadStocks: (state, action) => {
       state.stocks = action.payload;

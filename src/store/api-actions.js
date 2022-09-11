@@ -2,11 +2,11 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "./index";
 import { dropToken, saveToken } from "../api/token";
+import { errorHandle } from "api/error-handle";
 import { requireAuthorization } from "./user-process/user-process";
 import { setError, setSuccess, loadWareHouse, loadOrganizations } from "./app-data/app-data";
+import { adapterOrganizations, adapterWareHouses } from "assets/helpers";
 import { AuthorizationStatus, API_LINKS, HTTP_CODES, AUTH_TOKEN_KEY_NAMES } from "../assets/const";
-import { errorHandle } from "api/error-handle";
-import { adapterForOrganizations, adapterForWareHouses } from "assets/helpers";
 
 export const checkAuthAction = createAsyncThunk(
   "/requireAuthorization",
@@ -102,7 +102,12 @@ export const loadWareHouseAction = createAsyncThunk(
   "/loadWarehouse",
   async (_, { rejectWithValue, dispatch }) => {
     const { data } = await api.get(API_LINKS.GET_WAREHOUSES);
-    dispatch(loadWareHouse({ data: adapterForWareHouses(data), isLoading: true }));
+    dispatch(
+      loadWareHouse({
+        items: adapterWareHouses(data),
+        isLoading: true,
+      })
+    );
   }
 );
 
@@ -110,7 +115,12 @@ export const loadOrganizationsAction = createAsyncThunk(
   "/loadOrganizations",
   async (_, { rejectWithValue, dispatch }) => {
     const { data } = await api.get(API_LINKS.GET_ORGANIZATIONS);
-    dispatch(loadOrganizations({ data: adapterForOrganizations(data), isLoading: true }));
+    dispatch(
+      loadOrganizations({
+        data: adapterOrganizations(data),
+        isLoading: true,
+      })
+    );
   }
 );
 

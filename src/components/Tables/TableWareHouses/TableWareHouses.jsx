@@ -14,9 +14,9 @@ import { AUTH_TOKEN_KEY_NAMES } from "../../../assets/const";
 
 export const TableWareHouses = memo(() => {
   const dispatch = useDispatch();
-  const warehouses = useSelector((state) => state.data?.warehouses?.data);
-  const isLoading = useSelector((state) => state.data?.warehouses?.isLoading);
-  console.log(warehouses);
+  const storeWarehouses = useSelector((state) => state.data?.warehouses);
+  const { data, isLoading } = storeWarehouses;
+
   const handleClick = () => {
     dispatch(refreshTokenAction(getToken(AUTH_TOKEN_KEY_NAMES.refresh)));
   };
@@ -44,11 +44,7 @@ export const TableWareHouses = memo(() => {
       <div className="card-body pt-0">
         <div className="dataTables_wrapper dt-bootstrap4 no-footer">
           <div className="table-responsive">
-            <TableContent
-              data={warehouses}
-              isLoading={isLoading}
-              configTable={headerTableStoragesClasses}
-            />
+            <TableContent data={data?.items} isLoading={isLoading} />
           </div>
           {isLoading && (
             <div className="row">
