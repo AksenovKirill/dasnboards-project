@@ -28,5 +28,6 @@ export const appProcess = createSlice({
     },
   },
 });
-
+export const getIsOpenForm = (state) => state.app.isOpenForm;
+export const getIsOpenModal = (state) => state.app.isOpenModal;
 export const { addNewItemStorage, addNewItemProducts, switchForm, openModal } = appProcess.actions;

@@ -14,8 +14,7 @@ const initialState = {
     data: [],
     isLoading: false,
   },
-  error: undefined,
-  success: undefined,
+  status: undefined,
 };
 
 export const appData = createSlice({
@@ -39,14 +38,13 @@ export const appData = createSlice({
       state.stocks.isLoaded = true;
     },
 
-    setSuccess: (state, action) => {
-      state.success = action.payload;
-    },
-    setError: (state, action) => {
-      state.error = action.payload;
+    setStatus: (state, action) => {
+      state.status = action.payload;
     },
   },
 });
+export const getStatus = (state) => state.data?.status;
+export const getWareHouses = (state) => state.data?.warehouses;
+export const getOrganizaions = (state) => state.data?.organizations;
 
-export const { loadWareHouse, loadProducts, loadStocks, loadMarketPlaces, loadOrganizations, setError, setSuccess } =
-  appData.actions;
+export const { loadWareHouse, loadProducts, loadStocks, loadMarketPlaces, loadOrganizations, setStatus } = appData.actions;

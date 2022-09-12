@@ -1,12 +1,13 @@
 import React, { memo } from "react";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "hooks";
+import { getStatus } from "store/app-data/app-data";
+import { useAuth } from "../../../hooks/useAuth";
 import { AuthPageImage } from "../../../components/UI/Images/AuthPageImage";
 import { FormWrapper } from "../LoginForm/FormWrapper";
 import { InputLoginForm } from "../../../components/UI/Inputs/InputLoginForm/InputLoginForm";
 import { ButtonPrimary } from "../../../components/UI/Buttons/ButtonPrimary";
 import { SwitchForm } from "./SwitchForm";
-import { useAuth } from "../../../hooks/useAuth";
 import { inputAuthConfig } from "assets/configurators";
 
 export const FormAuth = memo(() => {
@@ -17,8 +18,7 @@ export const FormAuth = memo(() => {
     formState: { errors, isValid },
   } = useForm({ mode: "onBlur" });
 
-  const success = useSelector((state) => state.data?.success);
-
+  const success = useAppSelector(getStatus);
   const { handleSubmitLogin } = useAuth();
 
   const handleClick = (data) => {

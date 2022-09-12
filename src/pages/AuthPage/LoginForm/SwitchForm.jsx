@@ -1,10 +1,11 @@
+import { useAppSelector } from "hooks";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { switchForm } from "store/app-process/app-process";
+import { useDispatch } from "react-redux";
+import { getIsOpenForm, switchForm } from "store/app-process/app-process";
 
 export const SwitchForm = ({ text, sing }) => {
   const dispatch = useDispatch();
-  const isOpenForm = useSelector((state) => state.app.isOpenForm);
+  const isOpenForm = useAppSelector(getIsOpenForm);
   return (
     <div className="text-gray-500 text-center fw-semibold fs-6">
       {text}
