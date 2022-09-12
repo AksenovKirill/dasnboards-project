@@ -1,6 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import { TableMarketPlaces } from "../../components/Tables/TableMarketPlaces/TableMarketPlaces";
-
+import { Footer } from "../../components/Footer/Footer";
+import { ButtonScrollTop } from "../../components/UI/Buttons/ButtonScrollTop/ButtonScrollTop";
 export const MarketPlaces = memo(() => {
   return (
     <>

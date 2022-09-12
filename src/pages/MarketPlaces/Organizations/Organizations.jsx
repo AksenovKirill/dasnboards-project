@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { TableOrganizations } from "../../../components/Tables/TableOrganizations/TableOrganizations";
+import { TableOrganizations } from "./TableOrganizations/TableOrganizations";
 import { Footer } from "../../../components/Footer/Footer";
 import { ButtonScrollTop } from "../../../components/UI/Buttons/ButtonScrollTop/ButtonScrollTop";
 

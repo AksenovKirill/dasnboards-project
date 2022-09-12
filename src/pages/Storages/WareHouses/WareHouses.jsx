@@ -1,8 +1,7 @@
 import React, { memo } from "react";
-import { TableWareHouses } from "../../../components/Tables/TableWareHouses/TableWareHouses";
+import { TableWareHouses } from "./TableWareHouses/TableWareHouses";
 import { Footer } from "../../../components/Footer/Footer";
 import { ButtonScrollTop } from "../../../components/UI/Buttons/ButtonScrollTop/ButtonScrollTop";
-import { ButtonPrimary } from "../../../components/UI/Buttons/ButtonPrimary";
 
 export const WareHouses = memo(() => {
   return (

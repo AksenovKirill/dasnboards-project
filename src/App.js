@@ -5,9 +5,8 @@ import { ProductStock } from "./pages/Storages/ProductStock/ProductStock";
 import { Orders } from "./components/Marketplace/Orders/Orders";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
-import { APP_ROUTES } from "assets/const";
-import { AddItemWrapper } from "./components/AddItem/AddItemWrapper";
 import { Organizations } from "./pages/MarketPlaces/Organizations/Organizations";
+import { APP_ROUTES } from "assets/const";
 import "./styles/App.css";
 
 const App = () => {
@@ -18,7 +17,6 @@ const App = () => {
         <Route path={APP_ROUTES.WareHouses} element={<WareHouses />} />
         <Route path={APP_ROUTES.Products} element={<ProductStock />} />
         <Route path={APP_ROUTES.Organizations} element={<Organizations />} />
-        <Route path={APP_ROUTES.Add} element={<AddItemWrapper />} />
         <Route path="orders" element={<Orders />}>
           <Route path=":id" element={<Orders />} />
         </Route>

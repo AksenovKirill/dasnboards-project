@@ -1,12 +1,11 @@
 import React, { memo } from "react";
-import { ButtonPrimary } from "../ButtonPrimary";
 
-export const ButtonLoginForm = memo(({ children, type, ...props }) => {
+export const ButtonLoginForm = memo(({ className, children, ...props }) => {
   return (
     <div className="d-grid mb-10">
-      <ButtonPrimary type={type} {...props}>
+      <button className={`btn btn-primary ${className}`} {...props}>
         {children}
-      </ButtonPrimary>
+      </button>
     </div>
   );
 });

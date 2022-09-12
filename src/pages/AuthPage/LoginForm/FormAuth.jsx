@@ -46,16 +46,10 @@ export const FormAuth = memo(() => {
       <div className="d-flex flex-column-fluid flex-lg-row-auto justify-content-center justify-content-lg-end p-12">
         <div className="bg-body d-flex flex-center rounded-4 w-md-600px p-10">
           <div className="w-md-400px">
-            <form
-              onSubmit={handleSubmit(handleClick)}
-              style={{ position: "relative" }}
-              className="form w-100"
-            >
+            <form onSubmit={handleSubmit(handleClick)} style={{ position: "relative" }} className="form w-100">
               <div className="text-center mb-11">
                 <h1 className="text-dark fw-bolder mb-3">Sign In</h1>
-                <div className="text-gray-500 fw-semibold fs-6">
-                  Your Social Campaigns
-                </div>
+                <div className="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
               </div>
               {inputList}
               <div className="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
@@ -65,11 +59,7 @@ export const FormAuth = memo(() => {
                 </a>
               </div>
               <div className="d-grid mb-10">
-                <ButtonPrimary
-                  style={{ opacity: `${!isValid ? "0.3" : 1}` }}
-                  disabled={!isValid}
-                  type="submit"
-                >
+                <ButtonPrimary style={{ opacity: `${!isValid ? "0.3" : 1}` }} disabled={!isValid} type="submit">
                   Sing in
                 </ButtonPrimary>
               </div>

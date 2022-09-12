@@ -1,17 +1,7 @@
-import React, { useEffect, memo } from "react";
-import { useSelector } from "react-redux";
-import { InputTableSearch } from "../../UI/Inputs/InputTableSearch/InputTableSearch";
-import { SelectTableCategory } from "../../UI/Selects/SelectTableCategory/SelectTableCategory";
-import { LinkPrimary } from "../../UI/Links/LinkPrimary";
-import { TableContent } from "../Table/TableContent";
-import { SelectTableItemLimit } from "../../UI/Selects/SelectTableItemLimit/SelectTableItemLimit";
-import { Pagination } from "../../UI/Pagination/Pagination";
-import { headerTableMarketConfig } from "../../../assets/configurators";
+import React, { memo } from "react";
+import { TableContent } from "../TableContent";
 
 export const TableProductStock = memo(() => {
-  const newItem = useSelector((state) => state.app.items.products);
-  //const items = [...data, ...newItem];
-
   return (
     <div style={{ marginTop: "9.5rem" }} className="card card-flush">
       <div className="card-header align-items-center py-5 px-1 gap-2 gap-md-5">
@@ -29,11 +19,7 @@ export const TableProductStock = memo(() => {
       <div className="card-body pt-0">
         <div className="dataTables_wrapper dt-bootstrap4 no-footer">
           <div className="table-responsive">
-            <TableContent
-              data={[]}
-              isLoading={"isLoading"}
-              configTable={headerTableMarketConfig}
-            />
+            <TableContent data={[]} isLoading={"isLoading"} configTable={[]} />
           </div>
           {/* {!isLoading && (
             <div className="row">

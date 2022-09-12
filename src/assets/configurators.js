@@ -3,9 +3,10 @@ import {
   validationPassword,
   validationRepeatPassword,
   validationUserName,
+  validationAddItem,
 } from "./validations";
 
-export const headerTableStoragesClasses = [
+export const headerWRHousesClasses = [
   { className: "text-center px-10 min-w-80px" },
   { className: "text-center px-10 min-w-80px" },
   { className: "text-center px-10 min-w-80px" },
@@ -14,7 +15,7 @@ export const headerTableStoragesClasses = [
   { className: "text-center px-10 min-w-80px" },
 ];
 
-export const headerTableOrganizationsClasses = [
+export const headerOrganizationsClasses = [
   { className: "text-center min-w-80px" },
   { className: "text-center min-w-300px" },
   { className: "text-center min-w-300px" },
@@ -26,13 +27,13 @@ export const actionConfig = {
   className: "text-end min-w-100px px-10",
 };
 
-export const headerTableMarketConfig = [
-  { title: "Наименование товара", className: "text-center min-w-100px" },
-  { title: "Количество товара", className: "text-center min-w-30px" },
-  { title: "Цена", className: "text-center min-w-150px" },
-  { title: "Остатки", className: "text-center min-w-100px" },
-  { title: "Статус", className: "text-center min-w-100px" },
-  { title: "Действие", className: "text-end min-w-100px px-5" },
+export const headerMarketPLClasses = [
+  { className: "text-center min-w-100px" },
+  { className: "text-center min-w-30px" },
+  { className: "text-center min-w-150px" },
+  { className: "text-center min-w-100px" },
+  { className: "text-center min-w-100px" },
+  { className: "text-end min-w-100px px-5" },
 ];
 
 export const inputAuthConfig = [
@@ -43,7 +44,7 @@ export const inputAuthConfig = [
     isLabel: false,
     id: "key1",
     validation: validationUserName,
-    wrapper: "fv-row mb-8",
+    className: "fv-row mb-8",
   },
   {
     placeholder: "Your password",
@@ -52,7 +53,7 @@ export const inputAuthConfig = [
     isLabel: false,
     id: "key2",
     validation: validationPassword,
-    wrapper: "fv-row mb-8",
+    className: "fv-row mb-8",
   },
 ];
 
@@ -64,7 +65,7 @@ export const inputRegistrationConfig = [
     isLabel: false,
     id: "key3",
     validation: validationFirstLastName,
-    wrapper: "fv-row mb-8",
+    className: "fv-row mb-8",
   },
   {
     placeholder: "Last name",
@@ -73,7 +74,7 @@ export const inputRegistrationConfig = [
     isLabel: false,
     id: "key4",
     validation: validationFirstLastName,
-    wrapper: "fv-row mb-8",
+    className: "fv-row mb-8",
   },
   {
     placeholder: "Username",
@@ -82,7 +83,7 @@ export const inputRegistrationConfig = [
     isLabel: false,
     id: "key5",
     validation: validationUserName,
-    wrapper: "fv-row mb-8",
+    className: "fv-row mb-8",
   },
   {
     placeholder: "Password",
@@ -91,7 +92,7 @@ export const inputRegistrationConfig = [
     isLabel: false,
     id: "key6",
     validation: validationPassword,
-    wrapper: "fv-row mb-8",
+    className: "fv-row mb-8",
   },
   {
     placeholder: "Repeat password",
@@ -100,33 +101,27 @@ export const inputRegistrationConfig = [
     isLabel: false,
     id: "key7",
     validation: validationRepeatPassword,
-    wrapper: "fv-row mb-8",
+    className: "fv-row mb-8",
   },
 ];
 
-export const inputTableStorageAddItemConfig = [
+export const inputWrHousesAddConfig = [
   {
     id: "key8",
     type: "text",
-    label: "Название склада",
-    placeholder: "Название склада",
-    wrapper: "mb-12 fv-row",
-    validation: validationFirstLastName,
+    className: "mb-12 fv-row",
+    validation: validationAddItem,
   },
   {
     id: "key9",
     type: "text",
-    label: "Приоритет",
-    placeholder: "Приоритет",
     className: "mb-12 fv-row",
-    validation: validationFirstLastName,
+    validation: validationAddItem,
   },
   {
     id: "key10",
     type: "text",
-    label: "Статус",
-    placeholder: "Статус",
     className: "mb-12 fv-row",
-    validation: validationFirstLastName,
+    validation: validationAddItem,
   },
 ];

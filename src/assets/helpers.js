@@ -1,8 +1,4 @@
-import {
-  actionConfig,
-  headerTableOrganizationsClasses,
-  headerTableStoragesClasses,
-} from "./configurators";
+import { actionConfig, headerOrganizationsClasses, headerWRHousesClasses } from "./configurators";
 
 const getTitles = (data) => {
   return Object.keys(data[0] ?? {}).map((element) => ({
@@ -10,7 +6,7 @@ const getTitles = (data) => {
   }));
 };
 
-export const getTableTitles = (data, config) => {
+const getTableTitles = (data, config) => {
   const result = getTitles(data)?.map((element, index) => ({
     ...element,
     className: config[index].className,
@@ -22,6 +18,20 @@ export const getTableTitles = (data, config) => {
 const getAdaptArrays = (data) => {
   const adaptItems = data.map((object) => Object.values(object));
   return adaptItems;
+};
+
+export const getDataInputForm = (data, validation) => {
+  const result = data?.map((object, index) => ({
+    label: object.title,
+    isLabel: false,
+    placeholder: object.title,
+    id: `${object.title}${index}`,
+    type: "text",
+    className: "mb-10 fv-row",
+    validation: validation,
+  }));
+
+  return result;
 };
 
 export const adapterWareHouses = (data) => {
@@ -39,7 +49,7 @@ export const adapterWareHouses = (data) => {
   });
 
   const items = getAdaptArrays(adaptItems);
-  const headers = getTableTitles(adaptItems, headerTableStoragesClasses);
+  const headers = getTableTitles(adaptItems, headerWRHousesClasses);
   return { items, headers };
 };
 
@@ -53,6 +63,6 @@ export const adapterOrganizations = (data) => {
     };
   });
   const items = getAdaptArrays(adaptItems);
-  const headers = getTableTitles(adaptItems, headerTableOrganizationsClasses);
+  const headers = getTableTitles(adaptItems, headerOrganizationsClasses);
   return { items, headers };
 };

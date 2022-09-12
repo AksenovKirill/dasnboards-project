@@ -1,14 +1,13 @@
 import React, { memo } from "react";
 import { ErrorValidateForm } from "../../Errors/ErrorValidateForm";
-import { GoodIcon } from "../../Images/GoodIcon";
 
 export const InputLoginForm = memo((props) => {
   const { register, config, validation, errors } = props;
-  const { isLabel, type, label, placeholder, wrapper } = config;
+  const { isLabel, type, label, placeholder, className } = config;
 
   return (
     <>
-      <div style={{ position: "relative" }} className={wrapper}>
+      <div style={{ position: "relative" }} className={className}>
         {isLabel && <label className="required form-label">{label}</label>}
         <input
           type={type}
@@ -16,7 +15,7 @@ export const InputLoginForm = memo((props) => {
           className="form-control bg-transparent"
           {...register(config.label, { ...validation })}
         />
-        {errors ? (
+        {errors && (
           <ErrorValidateForm
             style={{
               position: "absolute",
@@ -27,8 +26,6 @@ export const InputLoginForm = memo((props) => {
           >
             {errors?.message || "Error"}
           </ErrorValidateForm>
-        ) : (
-          <GoodIcon />
         )}
       </div>
     </>

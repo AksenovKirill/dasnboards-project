@@ -31,7 +31,7 @@ export const appData = createSlice({
       state.marketplaces.isLoaded = action.payload.isLoading;
     },
     loadOrganizations: (state, action) => {
-      state.organizations.data = action.payload.data;
+      state.organizations.data = action.payload.items;
       state.organizations.isLoading = action.payload.isLoading;
     },
     loadStocks: (state, action) => {
@@ -48,12 +48,5 @@ export const appData = createSlice({
   },
 });
 
-export const {
-  loadWareHouse,
-  loadProducts,
-  loadStocks,
-  loadMarketPlaces,
-  loadOrganizations,
-  setError,
-  setSuccess,
-} = appData.actions;
+export const { loadWareHouse, loadProducts, loadStocks, loadMarketPlaces, loadOrganizations, setError, setSuccess } =
+  appData.actions;
